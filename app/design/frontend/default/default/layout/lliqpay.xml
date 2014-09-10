@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<lliqpay_processing_redirect>
+	    <reference name="root">
+	        <action method="setTemplate"><template>lliqpay/blank.phtml</template></action>
+	    </reference>
+	    <reference name="content">
+	        <block type="lliqpay/redirect" name="lliqpay_redirect" template="lliqpay/redirect.phtml" />
+	    </reference>
+	</lliqpay_processing_redirect>
+</layout>

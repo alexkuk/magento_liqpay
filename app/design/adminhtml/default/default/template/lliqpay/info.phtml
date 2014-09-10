@@ -1,0 +1,14 @@
+<?php echo $this->getMethod()->getTitle(); ?> (Liqpay)<br/>
+
+<?php if (Mage::helper('lliqpay')->isCaptured($this->getOrder())): ?>
+    <?php echo $this->__('Amount successfully captured.') ?><br/>
+<?php elseif (Mage::helper('lliqpay')->isChecking($this->getOrder())): ?>
+    <?php echo $this->__('Transaction is being reviewed by Liqpay.') ?> 
+    <form action="<?php echo Mage::getUrl('lliqpay/admin/check') ?>" method="post">
+        <input type="hidden" name="order" value="<?php echo $this->getOrder()->getId() ?>" />
+        <input type="submit" value="<?php echo $this->__('Renew data') ?>" />
+    </form>
+    <br/>
+<?php //else: ?>
+	<?php //echo $this->__('Liqpay validation failed.') ?>
+<?php endif ?>

@@ -1,0 +1,16 @@
+<strong><?php echo Mage::helper('lliqpay')->__('You will be redirected to Liqpay in a few seconds. If not please click on the redirect button.'); ?></strong>
+<form name="lliqpay_checkout" id="lliqpay_checkout" action="<?php echo $this->getFormAction();?>" method="post">
+<?php if (is_array($this->getFormData())): ?>
+    <?php foreach ($this->getFormData() as $name => $value): ?>
+        <input type="hidden" name="<?php echo $name; ?>" value="<?php echo $value; ?>"/>
+    <?php endforeach; ?>
+<?php endif; ?>
+<input type="button" onclick="document.lliqpay_checkout.submit();" value="<?php echo Mage::helper('lliqpay')->__('redirect') ?>">
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+    var paymentform = document.getElementById('lliqpay_checkout');
+    window.onload = paymentform.submit();
+//]]>
+</script>
